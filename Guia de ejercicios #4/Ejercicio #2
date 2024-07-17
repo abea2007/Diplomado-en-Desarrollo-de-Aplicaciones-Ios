@@ -1,0 +1,26 @@
+import Foundation
+
+class Temperatura {
+    var celsius: Double {
+        didSet {
+            fahrenheit = (celsius * 9/5) + 32
+        }
+    }
+    
+    var fahrenheit: Double
+    
+    init(celsius: Double) {
+        self.celsius = celsius
+        self.fahrenheit = (celsius * 9/5) + 32
+    }
+}
+
+// Uso del código
+let temperatura = Temperatura(celsius: 25.0)
+print("Celsius: \(temperatura.celsius), Fahrenheit: \(temperatura.fahrenheit)") // Celsius: 25.0, Fahrenheit: 77.0
+
+temperatura.celsius = 30.0
+print("Celsius: \(temperatura.celsius), Fahrenheit: \(temperatura.fahrenheit)") // Celsius: 30.0, Fahrenheit: 86.0
+
+temperatura.celsius = 0.0
+print("Celsius: \(temperatura.celsius), Fahrenheit: \(temperatura.fahrenheit)") // Celsius: 0.0, Fahrenheit: 32.0
