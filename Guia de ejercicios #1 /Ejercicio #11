@@ -1,0 +1,21 @@
+protocol Volable {
+    func volar() -> String
+}
+
+class Pajaro: Volable {
+    func volar() -> String {
+        return "El pájaro está volando"
+    }
+}
+
+class Avion: Volable {
+    func volar() -> String {
+        return "El avión está despegando"
+    }
+}
+
+let miPajaro = Pajaro()
+let miAvion = Avion()
+
+print(miPajaro.volar())
+print(miAvion.volar())
