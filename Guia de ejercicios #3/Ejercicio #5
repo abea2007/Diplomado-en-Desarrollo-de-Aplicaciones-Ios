@@ -1,0 +1,46 @@
+import Foundation
+
+// Definición del protocolo Empleado
+protocol Empleado {
+    func calcularSalario() -> Double
+}
+
+// Implementación de la clase EmpleadoBase que conforma el protocolo Empleado
+class EmpleadoBase: Empleado {
+    var salarioBase: Double
+    
+    init(salarioBase: Double) {
+        self.salarioBase = salarioBase
+    }
+    
+    func calcularSalario() -> Double {
+        return salarioBase
+    }
+}
+
+// Implementación de la estructura EmpleadoContrato que conforma el protocolo Empleado
+struct EmpleadoContrato: Empleado {
+    var salarioPorHora: Double
+    var horasTrabajadas: Double
+    
+    func calcularSalario() -> Double {
+        return salarioPorHora * horasTrabajadas
+    }
+}
+
+// Función que acepta un array de Empleado y calcula el salario total
+func calcularSalarioTotal(empleados: [Empleado]) -> Double {
+    var salarioTotal: Double = 0
+    for empleado in empleados {
+        salarioTotal += empleado.calcularSalario()
+    }
+    return salarioTotal
+}
+
+// Uso del código
+let empleadoFijo = EmpleadoBase(salarioBase: 3000.0)
+let empleadoContratado = EmpleadoContrato(salarioPorHora: 20.0, horasTrabajadas: 160.0)
+let empleados: [Empleado] = [empleadoFijo, empleadoContratado]
+
+let salarioTotal = calcularSalarioTotal(empleados: empleados)
+print("El salario total de todos los empleados es: \(salarioTotal)") // El salario total de todos los empleados es: 6200.0
