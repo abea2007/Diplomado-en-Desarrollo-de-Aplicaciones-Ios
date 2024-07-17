@@ -1,0 +1,35 @@
+import Foundation
+
+class Circulo {
+    private var _radio: Double
+    
+    var radio: Double {
+        get {
+            return _radio
+        }
+        set {
+            if newValue < 0 {
+                fatalError("El radio no puede ser negativo.")
+            }
+            _radio = newValue
+        }
+    }
+    
+    var area: Double {
+        return Double.pi * pow(_radio, 2)
+    }
+    
+    init(radio: Double) {
+        self.radio = radio
+    }
+}
+
+// Ejemplo de uso
+let circulo = Circulo(radio: 5)
+print("Radio: \(circulo.radio)")
+print("Área: \(circulo.area)")
+
+// Modificando el radio
+circulo.radio = 10
+print("Nuevo radio: \(circulo.radio)")
+print("Nueva área: \(circulo.area)")
