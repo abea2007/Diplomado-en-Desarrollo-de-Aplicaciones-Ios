@@ -1,0 +1,47 @@
+import Foundation
+
+// Definición de la enumeración EstadoPedido
+enum EstadoPedido {
+    case procesando
+    case enviado
+    case entregado
+}
+
+// Definición del protocolo NotificacionPedido
+protocol NotificacionPedido {
+    func notificarCambioDeEstado(nuevoEstado: EstadoPedido)
+}
+
+// Implementación de la clase Pedido
+class Pedido {
+    var estado: EstadoPedido {
+        didSet {
+            delegado?.notificarCambioDeEstado(nuevoEstado: estado)
+        }
+    }
+    
+    var delegado: NotificacionPedido?
+    
+    init(estado: EstadoPedido) {
+        self.estado = estado
+    }
+    
+    func cambiarEstado(nuevoEstado: EstadoPedido) {
+        self.estado = nuevoEstado
+    }
+}
+
+// Implementación de una clase Delegado que cumple con NotificacionPedido
+class Delegado: NotificacionPedido {
+    func notificarCambioDeEstado(nuevoEstado: EstadoPedido) {
+        print("El estado del pedido ha cambiado a: \(nuevoEstado)")
+    }
+}
+
+// Uso del código
+let delegado = Delegado()
+let miPedido = Pedido(estado: .procesando)
+miPedido.delegado = delegado
+
+miPedido.cambiarEstado(nuevoEstado: .enviado)
+miPedido.cambiarEstado(nuevoEstado: .entregado)
