@@ -1,0 +1,18 @@
+import Foundation
+
+struct Rectangulo {
+    var ancho: Double
+    var alto: Double
+    
+    mutating func cambiarDimensiones(ancho: Double, alto: Double) {
+        self.ancho = ancho
+        self.alto = alto
+    }
+}
+
+// Uso del código
+var miRectangulo = Rectangulo(ancho: 5.0, alto: 10.0)
+print("Dimensiones iniciales - Ancho: \(miRectangulo.ancho), Alto: \(miRectangulo.alto)") // Ancho: 5.0, Alto: 10.0
+
+miRectangulo.cambiarDimensiones(ancho: 7.0, alto: 14.0)
+print("Nuevas dimensiones - Ancho: \(miRectangulo.ancho), Alto: \(miRectangulo.alto)") // Ancho: 7.0, Alto: 14.0
