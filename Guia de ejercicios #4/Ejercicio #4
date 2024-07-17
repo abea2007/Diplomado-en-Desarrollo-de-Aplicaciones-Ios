@@ -1,0 +1,20 @@
+import Foundation
+
+struct Vector {
+    var x: Double
+    var y: Double
+    
+    mutating func mover(dx: Double, dy: Double) {
+        self.x += dx
+        self.y += dy
+    }
+}
+
+// Uso del código
+var miVector = Vector(x: 3.0, y: 4.0)
+print("Posición inicial - x: \(miVector.x), y: \(miVector.y)") // Posición inicial - x: 3.0, y: 4.0
+
+miVector.mover(dx: 2.0, dy: 3.0)
+print("Nueva posición - x: \(miVector.x), y: \(miVector.y)") // Nueva posición - x: 5.0, y: 7.0
+
+miVector.mover(dx
