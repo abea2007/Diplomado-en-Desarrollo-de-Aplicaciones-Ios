@@ -1,0 +1,16 @@
+import Foundation
+
+// Closure para ordenar en orden descendente
+let ordenDescendente: (Int, Int) -> Bool = { (a, b) in
+    return a > b
+}
+
+// Array de enteros
+var numeros = [3, 1, 4, 1, 5, 9, 2, 6, 5]
+
+// Ordenar el array usando el closure
+let numerosOrdenados = numeros.sorted(by: ordenDescendente)
+
+// Imprimir el resultado
+print("Array original: \(numeros)")
+print("Array ordenado en orden descendente: \(numerosOrdenados)")
