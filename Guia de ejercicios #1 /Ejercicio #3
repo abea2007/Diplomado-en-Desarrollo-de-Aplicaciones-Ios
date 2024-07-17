@@ -1,0 +1,35 @@
+func calcularEstadisticas(numeros: [Int]) -> (media: Double, mediana: Double, moda: Int?) {
+    // Media
+    let suma = numeros.reduce(0, +)
+    let media = Double(suma) / Double(numeros.count)
+    
+    // Mediana
+    let numerosOrdenados = numeros.sorted()
+    let midIndex = numerosOrdenados.count / 2
+    let mediana: Double
+    if numerosOrdenados.count % 2 == 0 {
+        mediana = Double(numerosOrdenados[midIndex - 1] + numerosOrdenados[midIndex]) / 2.0
+    } else {
+        mediana = Double(numerosOrdenados[midIndex])
+    }
+    
+    // Moda
+    var frecuencia: [Int: Int] = [:]
+    for numero in numeros {
+        frecuencia[numero, default: 0] += 1
+    }
+    let maxFrecuencia = frecuencia.values.max()
+    let modas = frecuencia.filter { $0.value == maxFrecuencia }.keys
+    let moda = modas.count == 1 ? modas.first : nil
+    
+    return (media, mediana, moda)
+}
+
+let estadisticas = calcularEstadisticas(numeros: [1, 2, 2, 3, 4, 4, 4, 5])
+print("Media: \(estadisticas.media)")
+print("Mediana: \(estadisticas.mediana)")
+if let moda = estadisticas.moda {
+    print("Moda: \(moda)")
+} else {
+    print("No hay una moda única")
+}
