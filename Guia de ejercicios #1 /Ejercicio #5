@@ -1,0 +1,19 @@
+func ordenarPorSeleccion(_ array: inout [Int]) {
+    let n = array.count
+    for i in 0..<n-1 {
+        var minIndex = i
+        for j in i+1..<n {
+            if array[j] < array[minIndex] {
+                minIndex = j
+            }
+        }
+        if minIndex != i {
+            array.swapAt(i, minIndex)
+        }
+    }
+}
+
+// Ejemplo de uso
+var numeros = [64, 25, 12, 22, 11, 90]
+ordenarPorSeleccion(&numeros)
+print("Array ordenado por selección: \(numeros)")
