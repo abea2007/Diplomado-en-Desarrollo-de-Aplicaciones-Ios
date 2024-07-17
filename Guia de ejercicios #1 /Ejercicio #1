@@ -1,0 +1,9 @@
+func calcularAreaYPerimetro(ancho: Double, alto: Double) -> (area: Double, perimetro: Double) {
+    let area = ancho * alto
+    let perimetro = 2 * (ancho + alto)
+    return (area, perimetro)
+}
+
+let resultado = calcularAreaYPerimetro(ancho: 5, alto: 10)
+print("Área: \(resultado.area)")
+print("Perímetro: \(resultado.perimetro)")
