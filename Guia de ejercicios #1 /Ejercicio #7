@@ -1,0 +1,26 @@
+import Foundation
+
+// Función recursiva
+func sumaRecursiva(_ n: Int) -> Int {
+    if n == 0 {
+        return 0
+    } else {
+        return n + sumaRecursiva(n - 1)
+    }
+}
+
+// Función iterativa
+func sumaIterativa(_ n: Int) -> Int {
+    var suma = 0
+    for i in 1...n {
+        suma += i
+    }
+    return suma
+}
+
+// Ejemplo de uso
+let resultadoRecursivo = sumaRecursiva(10)
+let resultadoIterativo = sumaIterativa(10)
+
+print("Suma recursiva: \(resultadoRecursivo)")
+print("Suma iterativa: \(resultadoIterativo)")
