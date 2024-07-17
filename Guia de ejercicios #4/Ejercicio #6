@@ -1,0 +1,40 @@
+import Foundation
+
+struct Rectangulo {
+    var ancho: Double {
+        didSet {
+            // Actualiza el perímetro al cambiar el ancho
+            actualizarPerimetro()
+        }
+    }
+    
+    var alto: Double {
+        didSet {
+            // Actualiza el perímetro al cambiar el alto
+            actualizarPerimetro()
+        }
+    }
+    
+    private(set) var perimetro: Double = 0.0
+    
+    init(ancho: Double, alto: Double) {
+        self.ancho = ancho
+        self.alto = alto
+        actualizarPerimetro()
+    }
+    
+    private mutating func actualizarPerimetro() {
+        perimetro = 2 * (ancho + alto)
+    }
+}
+
+// Ejemplo de uso
+var rectangulo = Rectangulo(ancho: 5, alto: 10)
+print("Ancho: \(rectangulo.ancho), Alto: \(rectangulo.alto), Perímetro: \(rectangulo.perimetro)")
+
+// Modificando el ancho y alto
+rectangulo.ancho = 7
+print("Nuevo ancho: \(rectangulo.ancho), Alto: \(rectangulo.alto), Nuevo perímetro: \(rectangulo.perimetro)")
+
+rectangulo.alto = 12
+print("Ancho: \(rectangulo.ancho), Nuevo alto: \(rectangulo.alto), Nuevo perímetro: \(rectangulo.perimetro)")
