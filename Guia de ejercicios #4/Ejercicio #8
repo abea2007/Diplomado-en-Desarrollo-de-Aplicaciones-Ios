@@ -1,0 +1,12 @@
+import Foundation
+
+// Closure para calcular el factorial
+let factorial: (Int) -> Int = { number in
+    return number <= 1 ? 1 : number * factorial(number - 1)
+}
+
+// Calcular el factorial de 5
+let resultado = factorial(5)
+
+// Imprimir el resultado
+print("El factorial de 5 es: \(resultado)")
