@@ -1,0 +1,40 @@
+import Foundation
+
+// Definición de la enumeración OperacionMatematica
+enum OperacionMatematica {
+    case suma
+    case resta
+    case multiplicacion
+    case division
+}
+
+// Implementación de la clase OperadorMatematico
+class OperadorMatematico {
+    static func realizarOperacion(_ a: Double, _ b: Double, operacion: OperacionMatematica) -> Double? {
+        switch operacion {
+        case .suma:
+            return a + b
+        case .resta:
+            return a - b
+        case .multiplicacion:
+            return a * b
+        case .division:
+            guard b != 0 else {
+                print("Error: División por cero")
+                return nil
+            }
+            return a / b
+        }
+    }
+}
+
+// Uso del código
+let resultadoSuma = OperadorMatematico.realizarOperacion(10, 5, operacion: .suma)
+let resultadoResta = OperadorMatematico.realizarOperacion(10, 5, operacion: .resta)
+let resultadoMultiplicacion = OperadorMatematico.realizarOperacion(10, 5, operacion: .multiplicacion)
+let resultadoDivision = OperadorMatematico.realizarOperacion(10, 5, operacion: .division)
+
+print("Resultado de la suma: \(resultadoSuma ?? 0)") // Resultado de la suma: 15.0
+print("Resultado de la resta: \(resultadoResta ?? 0)") // Resultado de la resta: 5.0
+print("Resultado de la multiplicación: \(resultadoMultiplicacion ?? 0)") // Resultado de la multiplicación: 50.0
+print("Resultado de la división: \(resultadoDivision ?? 0)") // Resultado de la división: 2.0
