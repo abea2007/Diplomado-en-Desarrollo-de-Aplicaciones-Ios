@@ -1,0 +1,18 @@
+import Foundation
+
+class CuentaBancaria {
+    var saldo: Double {
+        didSet {
+            print("El saldo ha cambiado. El nuevo saldo es: \(saldo)")
+        }
+    }
+    
+    init(saldoInicial: Double) {
+        self.saldo = saldoInicial
+    }
+}
+
+// Uso del código
+let miCuenta = CuentaBancaria(saldoInicial: 1000.0)
+miCuenta.saldo = 1200.0
+miCuenta.saldo = 1500.0
