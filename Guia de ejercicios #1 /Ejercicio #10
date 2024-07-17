@@ -1,0 +1,18 @@
+import Foundation
+
+struct Rectangulo {
+    var ancho: Double
+    var alto: Double
+    
+    func calcularArea() -> Double {
+        return ancho * alto
+    }
+    
+    func calcularPerimetro() -> Double {
+        return 2 * (ancho + alto)
+    }
+}
+
+let miRectangulo = Rectangulo(ancho: 5.0, alto: 10.0)
+print("Área: \(miRectangulo.calcularArea())")
+print("Perímetro: \(miRectangulo.calcularPerimetro())")
