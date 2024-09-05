@@ -88,6 +88,7 @@ class RecommendedPlaceCell: UICollectionViewCell {
     func configure(with title: String, subtitle: String, imageName: String, action: @escaping () -> Void) {
         titleLabel.text = title
         subtitleLabel.text = subtitle
+        ratingLabel.text = "★ ★ ★ ★ ☆"
         imageView.image = UIImage(named: imageName)
         readMoreAction = action
     }

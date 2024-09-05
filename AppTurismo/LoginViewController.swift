@@ -1,147 +1,181 @@
 import UIKit
 
 class LoginViewController: UIViewController {
-    
-    let usernameTextField = UITextField()
-    let passwordTextField = UITextField()
-    let loginButton = UIButton(type: .system)
-    
+
+    let logoImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "Brujula")
+        imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+
+    let titleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Travelmate"
+        label.font = UIFont.boldSystemFont(ofSize: 30)
+        label.textAlignment = .center
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
+    let usernameTextField: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = "Username"
+        textField.borderStyle = .roundedRect
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        return textField
+    }()
+
+    let passwordTextField: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = "Password"
+        textField.isSecureTextEntry = true
+        textField.borderStyle = .roundedRect
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        return textField
+    }()
+
+    let loginButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Login", for: .normal)
+        button.backgroundColor = .black
+        button.setTitleColor(.white, for: .normal)
+        button.layer.cornerRadius = 10
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+
+    let forgotPasswordButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Forgot password?", for: .normal)
+        button.setTitleColor(.gray, for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+
+    let signUpButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Sign Up", for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        button.layer.borderWidth = 1
+        button.layer.borderColor = UIColor.black.cgColor
+        button.layer.cornerRadius = 10
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+
+    let bottomLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Get started by creating an account"
+        label.font = UIFont.systemFont(ofSize: 12)
+        label.textColor = .gray
+        label.textAlignment = .center
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        view.backgroundColor = .white
         
-        // Configuración del fondo con gradiente
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.colors = [UIColor.systemBlue.cgColor, UIColor.systemTeal.cgColor]
-        gradientLayer.locations = [0.0, 1.0]
-        gradientLayer.frame = view.bounds
-        view.layer.insertSublayer(gradientLayer, at: 0)
-        
-        // Configuración del fondo de imagen
-        let backgroundImageView = UIImageView(image: UIImage(named: "Image"))
-        backgroundImageView.contentMode = .scaleAspectFill
-        backgroundImageView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(backgroundImageView)
-        
-        NSLayoutConstraint.activate([
-            backgroundImageView.topAnchor.constraint(equalTo: view.topAnchor),
-            backgroundImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            backgroundImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            backgroundImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-        ])
-        
-        // Configuración del título
-        let titleLabel = UILabel()
-        titleLabel.text = "Welcome!"
-        titleLabel.font = UIFont.systemFont(ofSize: 34, weight: .bold)
-        titleLabel.textAlignment = .center
-        titleLabel.textColor = .white
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        // Agregar subviews
+        view.addSubview(logoImageView)
         view.addSubview(titleLabel)
-        
-        NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 60),
-            titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-        ])
-        
-        // Configuración del nombre de usuario
-        let usernameLabel = UILabel()
-        usernameLabel.text = "Username"
-        usernameLabel.font = UIFont.systemFont(ofSize: 24, weight: .medium)
-        usernameLabel.textColor = .white
-        usernameLabel.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(usernameLabel)
-        
-        usernameTextField.borderStyle = .roundedRect
-        usernameTextField.backgroundColor = UIColor(white: 1.0, alpha: 0.9)
-        usernameTextField.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(usernameTextField)
-        
-        NSLayoutConstraint.activate([
-            usernameLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 80),
-            usernameLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
-            usernameLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
-            
-            usernameTextField.topAnchor.constraint(equalTo: usernameLabel.bottomAnchor, constant: 10),
-            usernameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
-            usernameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
-            usernameTextField.heightAnchor.constraint(equalToConstant: 40)
-        ])
-        
-        // Configuración de la contraseña
-        let passwordLabel = UILabel()
-        passwordLabel.text = "Password"
-        passwordLabel.font = UIFont.systemFont(ofSize: 24, weight: .medium)
-        passwordLabel.textColor = .white
-        passwordLabel.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(passwordLabel)
-        
-        passwordTextField.borderStyle = .roundedRect
-        passwordTextField.isSecureTextEntry = true
-        passwordTextField.backgroundColor = UIColor(white: 1.0, alpha: 0.9)
-        passwordTextField.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(passwordTextField)
-        
-        NSLayoutConstraint.activate([
-            passwordLabel.topAnchor.constraint(equalTo: usernameTextField.bottomAnchor, constant: 20),
-            passwordLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
-            passwordLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
-            
-            passwordTextField.topAnchor.constraint(equalTo: passwordLabel.bottomAnchor, constant: 10),
-            passwordTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
-            passwordTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
-            passwordTextField.heightAnchor.constraint(equalToConstant: 40)
-        ])
-        
-        // Configuración del botón de Login con sombra
-        loginButton.setTitle("Login", for: .normal)
-        loginButton.titleLabel?.font = UIFont.systemFont(ofSize: 24, weight: .bold)
-        loginButton.setTitleColor(.white, for: .normal)
-        loginButton.backgroundColor = UIColor.systemBlue
-        loginButton.layer.cornerRadius = 20
-        loginButton.layer.shadowColor = UIColor.black.cgColor
-        loginButton.layer.shadowOffset = CGSize(width: 0, height: 4)
-        loginButton.layer.shadowOpacity = 0.5
-        loginButton.layer.shadowRadius = 5
-        loginButton.translatesAutoresizingMaskIntoConstraints = false
-        loginButton.addTarget(self, action: #selector(handleLoginButtonTap), for: .touchUpInside)
         view.addSubview(loginButton)
+        view.addSubview(forgotPasswordButton)
+        view.addSubview(signUpButton)
+        view.addSubview(bottomLabel)
+
+        // Configuro constraints
+        setupConstraints()
         
-        NSLayoutConstraint.activate([
-            loginButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 30),
-            loginButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 80),
-            loginButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -80),
-            loginButton.heightAnchor.constraint(equalToConstant: 50)
-        ])
+        // Añado acción al botón de login
+        loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
+    }
+
+    @objc private func loginButtonTapped() {
+        guard let username = usernameTextField.text, !username.isEmpty,
+                 let password = passwordTextField.text, !password.isEmpty else {
+               // Muestro una alerta si alguno de los campos está vacío
+               showAlert(message: "Por favor ingrese su nombre de usuario y contraseña.")
+               return
+    }
+        navigateToHome()
     }
     
-    // Función que maneja el evento del botón de Login
-    @objc func handleLoginButtonTap() {
-        let username = usernameTextField.text ?? ""
-        let password = passwordTextField.text ?? ""
-        
-        if username.isEmpty || password.isEmpty {
-            showAlert(title: "Error", message: "Please enter both username and password.")
-        } else {
-            navigateToHome()
-        }
-    }
-    
-    // Función para navegar a la pantalla Home
-    func navigateToHome() {
-        let homeViewController = HomeViewController()
-        homeViewController.modalPresentationStyle = .fullScreen
-        present(homeViewController, animated: true, completion: nil)
-    }
-    
-    // Función para mostrar alertas
-    func showAlert(title: String, message: String) {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+    private func showAlert(message: String) {
+        let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(okAction)
         present(alertController, animated: true, completion: nil)
     }
     
+    func navigateToHome() {
+        let homeViewController = HomeViewController()
+        let navigationController = UINavigationController(rootViewController: homeViewController)
+        navigationController.modalPresentationStyle = .fullScreen
+        present(navigationController, animated: true, completion: nil)
+    }
+
+
+
+    func setupConstraints() {
+        // Logo constraints
+        NSLayoutConstraint.activate([
+            logoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 60),
+            logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            logoImageView.heightAnchor.constraint(equalToConstant: 100),
+            logoImageView.widthAnchor.constraint(equalToConstant: 100)
+        ])
+
+
+        NSLayoutConstraint.activate([
+            titleLabel.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 20),
+            titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
+
+        NSLayoutConstraint.activate([
+            usernameTextField.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 40),
+            usernameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
+            usernameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
+            usernameTextField.heightAnchor.constraint(equalToConstant: 40)
+        ])
+
+        NSLayoutConstraint.activate([
+            passwordTextField.topAnchor.constraint(equalTo: usernameTextField.bottomAnchor, constant: 20),
+            passwordTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
+            passwordTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
+            passwordTextField.heightAnchor.constraint(equalToConstant: 40)
+        ])
+
+        // Login button constraints
+        NSLayoutConstraint.activate([
+            loginButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 40),
+            loginButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
+            loginButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
+            loginButton.heightAnchor.constraint(equalToConstant: 50)
+        ])
+
     
+        NSLayoutConstraint.activate([
+            forgotPasswordButton.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 20),
+            forgotPasswordButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
+        NSLayoutConstraint.activate([
+            signUpButton.topAnchor.constraint(equalTo: forgotPasswordButton.bottomAnchor, constant: 20),
+            signUpButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
+            signUpButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
+            signUpButton.heightAnchor.constraint(equalToConstant: 50)
+        ])
+
+        // Bottom label constraints
+        NSLayoutConstraint.activate([
+            bottomLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
+            bottomLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
+    }
 }
-
-
-

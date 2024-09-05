@@ -1,6 +1,6 @@
 import UIKit
 
-class PlaceOneViewController: UIViewController {
+class FourViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -9,16 +9,16 @@ class PlaceOneViewController: UIViewController {
     }
 
     func setupUI() {
-      
+       
         let placeImageView = UIImageView()
         placeImageView.contentMode = .scaleAspectFill
-        placeImageView.image = UIImage(named: "Granada")
+        placeImageView.image = UIImage(named: "SanJuanDelSur")
         placeImageView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(placeImageView)
 
         // Label para la descripción del lugar en la parte inferior
         let descriptionLabel = UILabel()
-        descriptionLabel.text = "Ubicada a orillas del majestuoso Lago de Nicaragua, Granada es una ciudad colonial llena de encanto y rica en historia. Fundada en 1524, esta joya arquitectónica ofrece calles empedradas, coloridas fachadas y plazas vibrantes que te transportarán a otra época. Pasea por su imponente catedral, explora las misteriosas isletas en bote, o disfruta de su exquisita gastronomía en alguno de sus restaurantes típicos. Granada es también la puerta de entrada a aventuras emocionantes. Desde caminatas por el volcán Mombacho hasta recorridos por el lago y visitas a mercados artesanales, siempre hay algo fascinante por descubrir. Si buscas una mezcla perfecta de historia, cultura y naturaleza, Granada te espera con los brazos abiertos para ofrecerte una experiencia inolvidable. ¡Ven y vive la magia de Nicaragua en Granada"
+        descriptionLabel.text = "A orillas del Pacífico se encuentra San Juan del Sur, en Nicaragua, un encantador pueblo costero de ambiente relajado que además de ser un destino muy popular entre los turistas por sus playas de arena dorada y agua cristalina, es conocido por su animada vida nocturna con bares y restaurantes que bordean el malecón y donde se puede disfrutar de la música en vivo y espectaculares puestas de sol. En San Juan del Sur no te puedes perder la bahía de San Juan del Sur o la playa de Marsella entre muchos otros rincones donde podrás practicar surf, snorkel y otros deportes acuáticos. Su gente amigable y su ambiente relajado hacen que sea un lugar perfecto para relajarse y disfrutar de la belleza natural de esta región. Así que no lo pienses más y empieza a organizar tu viaje."
         descriptionLabel.numberOfLines = 0
         descriptionLabel.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         descriptionLabel.textAlignment = .center
@@ -48,13 +48,13 @@ class PlaceOneViewController: UIViewController {
             placeImageView.topAnchor.constraint(equalTo: view.topAnchor),
             placeImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             placeImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            placeImageView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.5),
+            placeImageView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.5), // 50% de la pantalla
 
-         
+            // Descripción ocupando toda la parte inferior con espacio para los botones
             descriptionLabel.topAnchor.constraint(equalTo: placeImageView.bottomAnchor, constant: 20),
             descriptionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             descriptionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            descriptionLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -80), // Deja espacio para los botones
+            descriptionLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -80), 
 
             // Íconos debajo de la descripción
             heartIcon.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),

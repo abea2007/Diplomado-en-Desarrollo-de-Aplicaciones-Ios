@@ -1,18 +1,37 @@
 import UIKit
 
-class HomeViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class HomeViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
 
     var collectionView: UICollectionView!
+    var searchBar: UISearchBar!
+    var filteredPlaceImages = [String]()
     
-    let recommendedImages = ["recommended1", "recommended2"]
-    let placeImages = ["place1", "place2", "place3", "place4", "place5"]
+    let recommendedImages = ["CornIsland", "MontelimarBeach"]
+    let placeImages = ["Granada", "VolcanMasaya", "Leon", "SanJuanDelSur", "IslaDelAmor"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        filteredPlaceImages = placeImages
+        setupSearchBar()
         setupCollectionView()
+        self.navigationItem.hidesBackButton = true
     }
-
+    
+    
+    func setupSearchBar(){
+        searchBar = UISearchBar()
+        searchBar.delegate = self
+        searchBar.placeholder = "Search Places..."
+        searchBar.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(searchBar)
+        
+        NSLayoutConstraint.activate([
+            searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: -30),
+            searchBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            searchBar.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        ])
+    }
     func setupCollectionView() {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -31,7 +50,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         view.addSubview(collectionView)
 
         NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            collectionView.topAnchor.constraint(equalTo: searchBar.bottomAnchor),
             collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
@@ -46,7 +65,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         if section == 0 {
             return recommendedImages.count
         } else {
-            return placeImages.count
+            return filteredPlaceImages.count
         }
     }
 
@@ -57,8 +76,28 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecommendedPlaceCell", for: indexPath) as! RecommendedPlaceCell
-            cell.configure(with: "Place \(indexPath.item + 1)", subtitle: "Subtitle for Place \(indexPath.item + 1)", imageName: placeImages[indexPath.item]) {
-                self.navigateToPlaceOneViewController()
+            let placeNumber = indexPath.item + 1
+            
+            if placeNumber == 1 {
+                cell.configure(with: "Granada", subtitle: "Nicaragua", imageName: placeImages[indexPath.item]) {
+                    self.navigateToPlaceOneViewController() // Para el primer botón
+                }
+            } else if placeNumber == 2 {
+                cell.configure(with: "Volcán Masaya", subtitle: "Nicaragua", imageName: placeImages[indexPath.item]) {
+                    self.navigateToPlaceTwoViewController() // Para el segundo botón
+                }
+            } else if placeNumber == 3 {
+                cell.configure(with: "Leon", subtitle: "Nicaragua", imageName: placeImages[indexPath.item]) {
+                    self.navigateToThirdViewController() // Para el tercer botón
+                }
+            } else if placeNumber == 4{
+                cell.configure(with: "San Juan del Sur", subtitle: "Nicaragua", imageName: placeImages[indexPath.item]){
+                    self.navigateToFourViewController()
+                }
+            } else if placeNumber == 5{
+                cell.configure(with: "Isla del Amor", subtitle: "Managua, Nicaragua", imageName: placeImages[indexPath.item]){
+                    self.navigateToFiveViewController()
+                }
             }
             return cell
         }
@@ -76,8 +115,38 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         let placeOneVC = PlaceOneViewController()
         navigationController?.pushViewController(placeOneVC, animated: true)
     }
+    func navigateToPlaceTwoViewController() {
+        let secondVC = PlaceTwoViewController()
+        navigationController?.pushViewController(secondVC, animated: true)
+    }
+    
+    func navigateToThirdViewController() {
+        let thirdVC = ThirdViewController()
+        navigationController?.pushViewController(thirdVC, animated: true)
+    }
+    
+    func navigateToFourViewController(){
+        let fourVC = FourViewController()
+        navigationController?.pushViewController(fourVC, animated: true)
+    }
+    
+    func navigateToFiveViewController(){
+        let fiveVC = FiveViewController()
+        navigationController?.pushViewController(fiveVC, animated: true)
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.isEmpty {
+               filteredPlaceImages = placeImages
+           } else {
+               filteredPlaceImages = placeImages.filter { $0.lowercased().contains(searchText.lowercased()) }
+           }
+           collectionView.reloadData()
+       }
+
     
     
     
     
 }
+

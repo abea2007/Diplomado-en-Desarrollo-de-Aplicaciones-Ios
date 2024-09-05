@@ -1,6 +1,6 @@
 import UIKit
 
-class PlaceOneViewController: UIViewController {
+class FiveViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -9,16 +9,16 @@ class PlaceOneViewController: UIViewController {
     }
 
     func setupUI() {
-      
+        
         let placeImageView = UIImageView()
         placeImageView.contentMode = .scaleAspectFill
-        placeImageView.image = UIImage(named: "Granada")
+        placeImageView.image = UIImage(named: "IslaDelAmor")
         placeImageView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(placeImageView)
 
         // Label para la descripción del lugar en la parte inferior
         let descriptionLabel = UILabel()
-        descriptionLabel.text = "Ubicada a orillas del majestuoso Lago de Nicaragua, Granada es una ciudad colonial llena de encanto y rica en historia. Fundada en 1524, esta joya arquitectónica ofrece calles empedradas, coloridas fachadas y plazas vibrantes que te transportarán a otra época. Pasea por su imponente catedral, explora las misteriosas isletas en bote, o disfruta de su exquisita gastronomía en alguno de sus restaurantes típicos. Granada es también la puerta de entrada a aventuras emocionantes. Desde caminatas por el volcán Mombacho hasta recorridos por el lago y visitas a mercados artesanales, siempre hay algo fascinante por descubrir. Si buscas una mezcla perfecta de historia, cultura y naturaleza, Granada te espera con los brazos abiertos para ofrecerte una experiencia inolvidable. ¡Ven y vive la magia de Nicaragua en Granada"
+        descriptionLabel.text = "La Isla del Amor, situada en el majestuoso Lago Xolotlán, es un destino encantador y romántico, perfecto para una escapada inolvidable. A solo 30 minutos en barco desde el Puerto Salvador Allende en Managua, el viaje hacia la isla es una aventura en sí misma, con guías que comparten historias y curiosidades del lugar. Al llegar, te recibe un entorno natural exuberante y vistas impresionantes que te invitan a relajarte y disfrutar. La isla cuenta con diversas instalaciones diseñadas para tu comodidad y disfrute. Encontrarás cabañas acogedoras, áreas de picnic, zonas para hamacas, un restaurante y piscinas tanto para adultos como para niños. Además, hay senderos que puedes explorar y un pozo de los deseos que añade un toque de magia a tu visita. Las actividades son variadas, desde nadar en las piscinas, hacer un picnic, hasta relajarte en una hamaca bajo la sombra de los árboles."
         descriptionLabel.numberOfLines = 0
         descriptionLabel.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         descriptionLabel.textAlignment = .center
@@ -48,13 +48,13 @@ class PlaceOneViewController: UIViewController {
             placeImageView.topAnchor.constraint(equalTo: view.topAnchor),
             placeImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             placeImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            placeImageView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.5),
+            placeImageView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.5), // 50% de la pantalla
 
-         
+            // Descripción ocupando toda la parte inferior con espacio para los botones
             descriptionLabel.topAnchor.constraint(equalTo: placeImageView.bottomAnchor, constant: 20),
             descriptionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             descriptionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            descriptionLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -80), // Deja espacio para los botones
+            descriptionLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -80), 
 
             // Íconos debajo de la descripción
             heartIcon.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),

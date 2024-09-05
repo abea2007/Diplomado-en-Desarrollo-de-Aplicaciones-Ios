@@ -18,7 +18,10 @@
 		77121E452C8571D300BFD3A7 /* RecommendedCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77121E442C8571D300BFD3A7 /* RecommendedCellCollectionViewCell.swift */; };
 		77121E472C85727900BFD3A7 /* RecommendedPlaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77121E462C85727900BFD3A7 /* RecommendedPlaceCell.swift */; };
 		77121E4B2C85992A00BFD3A7 /* PlaceOneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77121E4A2C85992A00BFD3A7 /* PlaceOneViewController.swift */; };
-		77121E512C87E7EF00BFD3A7 /* ConfiguracionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77121E502C87E7EF00BFD3A7 /* ConfiguracionViewController.swift */; };
+		77121E7D2C895CEC00BFD3A7 /* PlaceTwoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77121E7C2C895CEC00BFD3A7 /* PlaceTwoViewController.swift */; };
+		77121E7F2C895EC700BFD3A7 /* PlaceThreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77121E7E2C895EC700BFD3A7 /* PlaceThreeViewController.swift */; };
+		77121E812C89654E00BFD3A7 /* FourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77121E802C89654E00BFD3A7 /* FourViewController.swift */; };
+		77121E832C89678000BFD3A7 /* FiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77121E822C89678000BFD3A7 /* FiveViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,7 +38,10 @@
 		77121E442C8571D300BFD3A7 /* RecommendedCellCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendedCellCollectionViewCell.swift; sourceTree = "<group>"; };
 		77121E462C85727900BFD3A7 /* RecommendedPlaceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendedPlaceCell.swift; sourceTree = "<group>"; };
 		77121E4A2C85992A00BFD3A7 /* PlaceOneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceOneViewController.swift; sourceTree = "<group>"; };
-		77121E502C87E7EF00BFD3A7 /* ConfiguracionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfiguracionViewController.swift; sourceTree = "<group>"; };
+		77121E7C2C895CEC00BFD3A7 /* PlaceTwoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceTwoViewController.swift; sourceTree = "<group>"; };
+		77121E7E2C895EC700BFD3A7 /* PlaceThreeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceThreeViewController.swift; sourceTree = "<group>"; };
+		77121E802C89654E00BFD3A7 /* FourViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourViewController.swift; sourceTree = "<group>"; };
+		77121E822C89678000BFD3A7 /* FiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiveViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,7 +74,6 @@
 		77121E242C855E2E00BFD3A7 /* AppTurismo */ = {
 			isa = PBXGroup;
 			children = (
-				77121E4F2C87E7CB00BFD3A7 /* Configuracion */,
 				77121E4E2C87E7BF00BFD3A7 /* PlaceFive */,
 				77121E4D2C87E7B500BFD3A7 /* PlaceFour */,
 				77121E4C2C87E7AA00BFD3A7 /* PlaceThree */,
@@ -124,6 +129,7 @@
 		77121E492C858B0700BFD3A7 /* PlaceTwo */ = {
 			isa = PBXGroup;
 			children = (
+				77121E7C2C895CEC00BFD3A7 /* PlaceTwoViewController.swift */,
 			);
 			path = PlaceTwo;
 			sourceTree = "<group>";
@@ -131,6 +137,7 @@
 		77121E4C2C87E7AA00BFD3A7 /* PlaceThree */ = {
 			isa = PBXGroup;
 			children = (
+				77121E7E2C895EC700BFD3A7 /* PlaceThreeViewController.swift */,
 			);
 			path = PlaceThree;
 			sourceTree = "<group>";
@@ -138,6 +145,7 @@
 		77121E4D2C87E7B500BFD3A7 /* PlaceFour */ = {
 			isa = PBXGroup;
 			children = (
+				77121E802C89654E00BFD3A7 /* FourViewController.swift */,
 			);
 			path = PlaceFour;
 			sourceTree = "<group>";
@@ -145,16 +153,9 @@
 		77121E4E2C87E7BF00BFD3A7 /* PlaceFive */ = {
 			isa = PBXGroup;
 			children = (
+				77121E822C89678000BFD3A7 /* FiveViewController.swift */,
 			);
 			path = PlaceFive;
-			sourceTree = "<group>";
-		};
-		77121E4F2C87E7CB00BFD3A7 /* Configuracion */ = {
-			isa = PBXGroup;
-			children = (
-				77121E502C87E7EF00BFD3A7 /* ConfiguracionViewController.swift */,
-			);
-			path = Configuracion;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -230,13 +231,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				77121E3D2C855F8F00BFD3A7 /* LoginViewController.swift in Sources */,
+				77121E7F2C895EC700BFD3A7 /* PlaceThreeViewController.swift in Sources */,
 				77121E472C85727900BFD3A7 /* RecommendedPlaceCell.swift in Sources */,
 				77121E4B2C85992A00BFD3A7 /* PlaceOneViewController.swift in Sources */,
+				77121E832C89678000BFD3A7 /* FiveViewController.swift in Sources */,
 				77121E262C855E2E00BFD3A7 /* AppDelegate.swift in Sources */,
 				77121E282C855E2E00BFD3A7 /* SceneDelegate.swift in Sources */,
 				77121E422C855FCD00BFD3A7 /* HomeViewController.swift in Sources */,
-				77121E512C87E7EF00BFD3A7 /* ConfiguracionViewController.swift in Sources */,
+				77121E7D2C895CEC00BFD3A7 /* PlaceTwoViewController.swift in Sources */,
 				77121E452C8571D300BFD3A7 /* RecommendedCellCollectionViewCell.swift in Sources */,
+				77121E812C89654E00BFD3A7 /* FourViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
